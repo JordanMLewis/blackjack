@@ -1,5 +1,6 @@
 package tsubaiso_blackjack;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Deck extends CardContainer{
@@ -11,7 +12,7 @@ public class Deck extends CardContainer{
 	}
 	
 	/**
-	 * 
+	 *  Creates a full deck of cards with values 2 to Ace for each suit.
 	 */
 	public void initializeDeck(){
 		//Create all card combinations using enumerations
@@ -26,17 +27,20 @@ public class Deck extends CardContainer{
 	 * 
 	 */
 	public void shuffle(){
-		ArrayList<Card> tmpDeck = new ArrayList<Card>();
-		Random rand = new Random();
-		int randomCardIndex = 0;
-		int originalDeckSize = this.cards.size();
-		//Choose cards at random
-		for(int i = 0; i < originalDeckSize; i++){
-			randomCardIndex = rand.nextInt(this.cards.size());	//[0, size+1)
-			tmpDeck.add(this.cards.get(randomCardIndex));
-			this.cards.remove(randomCardIndex);
-		}
-		this.cards = tmpDeck;
+		
+		Collections.shuffle(this.cards, new Random());
+		
+//		ArrayList<Card> tmpDeck = new ArrayList<Card>();
+//		Random rand = new Random();
+//		int randomCardIndex = 0;
+//		int originalDeckSize = this.cards.size();
+//		//Choose cards at random
+//		for(int i = 0; i < originalDeckSize; i++){
+//			randomCardIndex = rand.nextInt(this.cards.size());	//[0, size+1)
+//			tmpDeck.add(this.cards.get(randomCardIndex));
+//			this.cards.remove(randomCardIndex);
+//		}
+//		this.cards = tmpDeck;
 	}//end shuffle
 
 	public Card drawCard(){

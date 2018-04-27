@@ -21,7 +21,7 @@ public class Printing {
 		out.println("You win!");
 	}
 	
-	public static void printDealerWinMessage(){
+	public static void printPlayerLoseMessage(){
 		out.println("You lose.");
 	}
 	
@@ -57,6 +57,10 @@ public class Printing {
 		out.println("Dealer busts! You win.");
 	}
 	
+	public static void printPlayerBustMessage(){
+		out.println("Player busts! You lose.");
+	}
+	
 	public static void printHandAndValue(String playerName, Hand h){
 		out.print(playerName + "'s hand: ");
 		out.print(h.toString() + "- ");
@@ -68,6 +72,10 @@ public class Printing {
 	}
 
 	public static void printEndRound() {
-		System.out.println("End of round.\n==========================================\n");
+		out.println("End of round.\n==========================================\n");
+	}
+
+	public static void printDealerWinsWithValue(Hand dealerHand) {
+		out.println("Dealer wins with: " + dealerHand.getValueOfCards() + ".");
 	}
 }
