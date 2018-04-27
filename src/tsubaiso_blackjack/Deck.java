@@ -24,31 +24,23 @@ public class Deck extends CardContainer{
 	} //end createDeck
 
 	/**
-	 * 
+	 * Shuffle the deck of cards in place using random seed.
 	 */
 	public void shuffle(){
-		
 		Collections.shuffle(this.cards, new Random());
-//		
-//		ArrayList<Card> tmpDeck = new ArrayList<Card>();
-//		Random rand = new Random();
-//		int randomCardIndex = 0;
-//		int originalDeckSize = this.cards.size();
-//		//Choose cards at random
-//		for(int i = 0; i < originalDeckSize; i++){
-//			randomCardIndex = rand.nextInt(this.cards.size());	//[0, size+1)
-//			tmpDeck.add(this.cards.get(randomCardIndex));
-//			this.cards.remove(randomCardIndex);
-//		}
-//		this.cards = tmpDeck;
-	}//end shuffle
+	}
 
+	/**
+	 * Removes top card from the deck.
+	 * 
+	 * @return Card - the top card of the deck.
+	 */
 	public Card drawCard(){
 		return this.removeTopCard();
 	}
 	
 	/**
-	 * 
+	 * Draws N cards from the deck and return them to the user.
 	 * 
 	 * @param n - Cards to remove
 	 * @return ArrayList<Card> - The cards that were removed from the container.
@@ -56,7 +48,6 @@ public class Deck extends CardContainer{
 	public ArrayList<Card> drawNCards(int n){
 		ArrayList<Card> cardsDrawn = new ArrayList<Card>();
 		Card c = null;
-
 		//Draw as many cards before running out
 		for(int i = 0; i < n; i++){
 			c = this.removeTopCard();
@@ -64,7 +55,6 @@ public class Deck extends CardContainer{
 				cardsDrawn.add(c);
 			}
 		}
-		
 		return cardsDrawn;
 	}
 }

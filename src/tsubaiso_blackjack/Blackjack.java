@@ -1,6 +1,5 @@
 package tsubaiso_blackjack;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Blackjack {
@@ -12,9 +11,8 @@ public class Blackjack {
 		private static int command = 0;
 		
 	public static void main(String[] args){
-		
 		Printing.printWelcomeMessage();
-
+		
 		//Create deck of cards and player/dealer hands to hold them.
 		Deck playingDeck = new Deck();
 		Hand playerHand = new Hand();
@@ -40,9 +38,10 @@ public class Blackjack {
 				Printing.printDealerFirstCard(dealerHand);
 				
 				command = getCommandFromUser(scanner);
+
 				//Hit 
 				if(command == 1){
-					roundFinished = commandPlayerHit(playerHand, playingDeck);
+					commandPlayerHit(playerHand, playingDeck);
 				//Stand
 				} else if (command == 2) {
 					break;
@@ -69,20 +68,17 @@ public class Blackjack {
 		Printing.printThankYouMessage();
 	}
 
-	private static boolean commandPlayerHit(Hand playerHand, Deck playingDeck) {
-		boolean roundFinished = false;
+	private static void commandPlayerHit(Hand playerHand, Deck playingDeck) {
 		
 		Card drawn = playingDeck.drawCard();
-		System.out.println("Player draws: " + drawn.toString());
 		playerHand.addCard(drawn);
+		Printing.printPlayerDraws(drawn);
 		
 		//Player loses if they are over 21
 		if(playerHand.getValueOfCards() > 21){
 			Printing.printPlayerBustMessage();
 			roundFinished = true;
 		}
-		
-		return roundFinished;
 	}
 
 	private static int getCommandFromUser(Scanner scanner) {
@@ -121,19 +117,20 @@ public class Blackjack {
 		
 			//Dealer has natural 21, player loses
 			} else if (dVal == 21 && pVal != 21){
-				System.out.println("Dealer wins with a natural 21.");
+				Printing.printDealerNatural21();
 				res = 2;
 
 			//Player has natural 21, player wins
 			} else if (dVal != 21 && pVal == 21){
 				Printing.printHandAndValue("Player", playerHand);
+				Printing.printPlayerNatural21();
 				res = 1;
 			}
 			
 		//If dealer could not show, check player's hand
 		} else if (pVal == 21){
 			Printing.printHandAndValue("Player", playerHand);
-			System.out.println("You win with a natural 21.");
+			Printing.printPlayerNatural21();
 			res = 1;
 		}
 		
@@ -143,8 +140,6 @@ public class Blackjack {
 	public static int checkWinner(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		
 		int res = -1;
-		
-		//roundFinished = false;
 		
 		// If player stands and dealer already has higher value, dealer wins.
 		Printing.printDealerHandAndValue(dealerHand);
@@ -158,14 +153,14 @@ public class Blackjack {
 		// Dealer must draw until the reach 17.
 		while(dealerHand.getValueOfCards() < 17 && roundFinished == false){
 			drawn = playingDeck.drawCard();
-			//System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
 			dealerHand.addCard(drawn);
-			System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
+			Printing.printDealerDrawnAndValue(drawn, dealerHand);
 		}
 		
 		int playerValue = playerHand.getValueOfCards();
 		int dealerValue = dealerHand.getValueOfCards();
-		
+	
+		//If dealer is over 21, dealer loses
 		if(dealerValue > 21 && roundFinished == false){
 			Printing.printDealerBustMessage();
 			roundFinished = true;
@@ -178,16 +173,16 @@ public class Blackjack {
 			// Player wins
 			if(playerValue > dealerValue){
 				Printing.printPlayerWinMessage();
-				roundFinished = true;
-				
+
 			// Dealer wins
 			} else if (playerValue < dealerValue){
 				Printing.printDealerHandAndValue(dealerHand);
 				Printing.printPlayerLoseMessage();
-				roundFinished = true;
+			} else {
+				Printing.printPushMessage();
 			}
+			roundFinished = true;
 		}
-		
 		return res;
 	}
 }

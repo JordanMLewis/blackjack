@@ -78,4 +78,20 @@ public class Printing {
 	public static void printDealerWinsWithValue(Hand dealerHand) {
 		out.println("Dealer wins with: " + dealerHand.getValueOfCards() + ".");
 	}
+	
+	public static void printPlayerDraws(Card c){
+		System.out.println("Player draws: " + c.toString());
+	}
+	
+	public static void printDealerDrawnAndValue(Card drawn, Hand dealerHand){
+		System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
+	}
+	
+	public static void printPlayerNatural21(){
+		System.out.println("You win with a natural 21.");
+	}
+	
+	public static void printDealerNatural21(){
+		System.out.println("Dealer wins with a natural 21.");
+	}
 }
