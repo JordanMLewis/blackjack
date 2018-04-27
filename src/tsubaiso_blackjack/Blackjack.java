@@ -18,6 +18,13 @@ public class Blackjack {
 		Hand playerHand = new Hand();
 		Hand dealerHand = new Hand();
 
+		gameLoop(playerHand, dealerHand, playingDeck);
+		
+		scanner.close();
+		Printing.printThankYouMessage();
+	}
+
+	private static void gameLoop(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		//Main game loop
 		while(playing){
 			
@@ -32,25 +39,7 @@ public class Blackjack {
 				roundFinished = true;
 			}
 			
-			// Play round
-			while(!roundFinished){
-				Printing.printHandAndValue("Player", playerHand);
-				Printing.printDealerFirstCard(dealerHand);
-				
-				command = getCommandFromUser(scanner);
-
-				//Hit 
-				if(command == 1){
-					commandPlayerHit(playerHand, playingDeck);
-				//Stand
-				} else if (command == 2) {
-					break;
-				//Leave table
-				} else if(command == 3){
-					playing = false;
-					break;
-				}
-			}
+			playRound(playerHand, dealerHand, playingDeck);
 
 			checkWinner(playerHand, dealerHand, playingDeck);
 						
@@ -59,13 +48,32 @@ public class Blackjack {
 			playingDeck.addCards(dealerHand.foldHand());
 			playingDeck.shuffle();
 			Printing.printEndRound();
-			
 			//Start new round
 			roundFinished = false;
-			
 		}//End game loop
-		scanner.close();
-		Printing.printThankYouMessage();
+		return;
+	}
+
+	private static void playRound(Hand playerHand, Hand dealerHand, Deck playingDeck) {
+		// Play round
+		while(!roundFinished){
+			Printing.printHandAndValue("Player", playerHand);
+			Printing.printDealerFirstCard(dealerHand);
+			
+			command = getCommandFromUser(scanner);
+
+			//Hit 
+			if(command == 1){
+				commandPlayerHit(playerHand, playingDeck);
+			//Stand
+			} else if (command == 2) {
+				break;
+			//Leave table
+			} else if(command == 3){
+				playing = false;
+				break;
+			}
+		}
 	}
 
 	private static void commandPlayerHit(Hand playerHand, Deck playingDeck) {
