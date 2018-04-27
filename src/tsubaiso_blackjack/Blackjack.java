@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Blackjack {
 
+		private static boolean playing = true;
+		private static boolean roundFinished = false;
+		private static Card drawn = null;
+		private static Scanner scanner = new Scanner(System.in);
+		
 	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		boolean playing = true;
-		boolean roundFinished = false;
-		Card drawn = null;
 		int command = 0;
 		
 		Printing.printWelcomeMessage();
@@ -31,87 +32,55 @@ public class Blackjack {
 			if(checkNaturalTwentyOne(playerHand, dealerHand)){
 				roundFinished = true;
 			}
-			
-	  /*    ____________________________________________________________________
-			Round loop
-			____________________________________________________________________	*/	
+
+			// Play round
 			while(!roundFinished){
 				Printing.printHandAndValue("Player", playerHand);
 				Printing.printDealerFirstCard(dealerHand);
-				
-		  /*    ____________________________________________________________________
-				Get next command
-				____________________________________________________________________	*/		
 				command = getCommandFromUser(scanner);
-				
-				
-				//TODO encapsulate commands and what they do
-		  /*    ____________________________________________________________________
-				Player hits; draw another card
-				____________________________________________________________________	*/		
+				//Hit 
 				if(command == 1){
-					
-					drawn = playingDeck.drawCard();
-					System.out.println("Player draws: " + drawn.toString());
-					playerHand.addCard(drawn);
-					
-					//Player loses if they are over 21
-					if(playerHand.getValueOfCards() > 21){
-						System.out.println("Bust. Player is over 21.");
-						roundFinished = true;
-					}
-					
-		  /*    ____________________________________________________________________
-				Player stands; no draw
-				____________________________________________________________________	*/	
+					roundFinished = commandPlayerHit(playerHand, playingDeck);
+				//Stand
 				} else if (command == 2) {
 					break;
-					
-		  /*    ____________________________________________________________________
-				Player leaves the game
-				____________________________________________________________________	*/	
+				//Leave table
 				} else if(command == 3){
 					playing = false;
 					break;
 				}
-			} //End round while loop
+			}
 
-			
-	  /*    ____________________________________________________________________
-			Player and dealer show their hands
-			____________________________________________________________________	*/	
 			System.out.println("Dealer's hand: " + dealerHand.toString() + "- " + dealerHand.getValueOfCards());
-
 			if(roundFinished == false){
 				if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && roundFinished == false){
 					System.out.println("Dealer wins with: " + dealerHand.getValueOfCards() + ".");
 				}
 
-		  /*    ____________________________________________________________________
-				Dealer must draw to 16, must stand at 17
-				____________________________________________________________________	*/	
+				//Dealer must draw until the reach 17.
 				while(dealerHand.getValueOfCards() < 17 && roundFinished == false){
 					drawn = playingDeck.drawCard();
 					System.out.println("Dealer draws: " + drawn.toString());
 					dealerHand.addCard(drawn);
 				}
+				
 				int playerValue = playerHand.getValueOfCards();
 				int dealerValue = dealerHand.getValueOfCards();
 				
 				System.out.println("Dealer's hand is valued at: " + dealerValue);
 				if(dealerValue > 21 && roundFinished == false){
-					System.out.println("Dealer busts! You win.");
+					Printing.printDealerBustMessage();
 					roundFinished = true;
 				}
 				
 				if(playerValue > dealerValue && roundFinished == false){
-					System.out.println("You win!");
+					Printing.printPlayerWinMessage();
 					roundFinished = true;
 				} else if (playerValue < dealerValue && roundFinished == false){
-					System.out.println("You lose.");
+					Printing.printDealerWinMessage();
 					roundFinished = true;
 				} else {
-					System.out.println("Push. No winners.");
+					Printing.printDealerBustMessage();
 					roundFinished = true;
 				}
 	
@@ -121,7 +90,7 @@ public class Blackjack {
 			playingDeck.addCards(playerHand.foldHand());
 			playingDeck.addCards(dealerHand.foldHand());
 			playingDeck.shuffle();
-			System.out.println("End of round.\n==========================================\n");
+			Printing.printEndRound();
 			
 			//Start new round
 			roundFinished = false;
@@ -129,6 +98,22 @@ public class Blackjack {
 		}//End game loop
 		scanner.close();
 		Printing.printThankYouMessage();
+	}
+
+	private static boolean commandPlayerHit(Hand playerHand, Deck playingDeck) {
+		boolean roundFinished = false;
+		
+		Card drawn = playingDeck.drawCard();
+		System.out.println("Player draws: " + drawn.toString());
+		playerHand.addCard(drawn);
+		
+		//Player loses if they are over 21
+		if(playerHand.getValueOfCards() > 21){
+			System.out.println("Bust. Player is over 21.");
+			roundFinished = true;
+		}
+		
+		return roundFinished;
 	}
 
 	private static int getCommandFromUser(Scanner scanner) {
@@ -171,7 +156,7 @@ public class Blackjack {
 				//Printing.printDealerHandAndValue(dealerHand);
 				result = true;
 
-				//Player has natural 21, player wins
+			//Player has natural 21, player wins
 			} else if (dVal != 21 && pVal == 21){
 				Printing.printHandAndValue("Player", playerHand);
 				result = true;

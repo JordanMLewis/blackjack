@@ -17,6 +17,14 @@ public class Printing {
 		out.println("Push. No winners.");
 	}
 	
+	public static void printPlayerWinMessage(){
+		out.println("You win!");
+	}
+	
+	public static void printDealerWinMessage(){
+		out.println("You lose.");
+	}
+	
 	public static void printWelcomeMessage() {
 		out.print("Welcome to Blackjack!\n");
 		out.print("\n");
@@ -45,6 +53,10 @@ public class Printing {
 		}
 	}
 	
+	public static void printDealerBustMessage(){
+		out.println("Dealer busts! You win.");
+	}
+	
 	public static void printHandAndValue(String playerName, Hand h){
 		out.print(playerName + "'s hand: ");
 		out.print(h.toString() + "- ");
@@ -53,5 +65,9 @@ public class Printing {
 
 	public static void printDealerFirstCard(Hand h) {
 		out.println("Dealer's hand: " + h.getTopCard().toString() + " and one hidden card.");
+	}
+
+	public static void printEndRound() {
+		System.out.println("End of round.\n==========================================\n");
 	}
 }
