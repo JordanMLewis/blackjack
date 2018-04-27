@@ -1,3 +1,9 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class represents the cards in the player's hand. 
+ * 
+ */
 package tsubaiso_blackjack;
 
 import java.util.ArrayList;

@@ -1,3 +1,10 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class represents a container for cards and provides 
+ *  various methods for modifying a group of cards.
+ * 
+ */
 package tsubaiso_blackjack;
 
 import java.util.ArrayList;

@@ -1,7 +1,10 @@
+/*
+ *  Author: Jordan M. Lewis
+ * 
+ *  This enum contains the definition of each playing card value.
+ */
 package tsubaiso_blackjack;
 
-
-//Can we define our table of values here?
 public enum Value {
 	TWO(2), 
 	THREE(3), 
@@ -19,6 +22,7 @@ public enum Value {
 
 	private final int value;
 	
+	//Automatically assign each constant an int value
 	Value(int i){
 		this.value = i;
 	}

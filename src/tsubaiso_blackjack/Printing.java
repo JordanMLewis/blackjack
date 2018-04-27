@@ -1,3 +1,9 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class is used to organize various print statements used during gameplay.
+ * 
+ */
 package tsubaiso_blackjack;
 
 import java.io.PrintStream;

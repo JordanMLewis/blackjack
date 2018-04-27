@@ -1,3 +1,9 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class contains the main game play logic for Blackjack.
+ * 
+ */
 package tsubaiso_blackjack;
 
 import java.util.Scanner;

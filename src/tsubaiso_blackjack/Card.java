@@ -1,6 +1,13 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class represents a playing card.
+ * 
+ */
 package tsubaiso_blackjack;
 
 public class Card {
+	
 	private Suit suit;
 	private Value value;
 	

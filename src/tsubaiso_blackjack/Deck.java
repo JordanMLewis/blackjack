@@ -1,4 +1,11 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This class is represented as a deck of cards, and is used to provide cards to players.
+ * 
+ */
 package tsubaiso_blackjack;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -15,7 +22,7 @@ public class Deck extends CardContainer{
 	 *  Creates a full deck of cards with values 2 to Ace for each suit.
 	 */
 	public void initializeDeck(){
-		//Create all card combinations using enumerations
+		//Create all card combinations using the enumerations
 		for(Suit cardSuit : Suit.values()){
 			for(Value cardValue : Value.values()){
 				this.cards.add(new Card(cardSuit, cardValue));
