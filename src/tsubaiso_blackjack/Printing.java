@@ -39,18 +39,18 @@ public class Printing {
 	}
 
 	public static void printDealingWithAnimation(){
-		out.print("Dealing");
-		try{
-			//Thread.sleep(1000);
-			out.print(".");
-			//Thread.sleep(1000);
-			out.print(".");
-			//Thread.sleep(1000);
-			out.print(".\n");
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			//Do nothing
-		}
+		out.println("Dealing");
+//		try{
+//			//Thread.sleep(1000);
+//			out.print(".");
+//			//Thread.sleep(1000);
+//			out.print(".");
+//			//Thread.sleep(1000);
+//			out.print(".\n");
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			//Do nothing
+//		}
 	}
 	
 	public static void printDealerBustMessage(){

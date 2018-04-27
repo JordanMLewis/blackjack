@@ -29,7 +29,7 @@ public class Deck extends CardContainer{
 	public void shuffle(){
 		
 		Collections.shuffle(this.cards, new Random());
-		
+//		
 //		ArrayList<Card> tmpDeck = new ArrayList<Card>();
 //		Random rand = new Random();
 //		int randomCardIndex = 0;

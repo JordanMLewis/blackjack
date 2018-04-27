@@ -51,7 +51,7 @@ abstract class CardContainer {
 	 */
 	public ArrayList<Card> removeAllCards(){
 		ArrayList<Card> tmp = this.cards;
-		this.cards.clear();
+		this.cards = new ArrayList<Card>();
 		return tmp;
 	}
 	
