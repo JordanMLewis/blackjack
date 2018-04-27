@@ -144,7 +144,7 @@ public class Blackjack {
 		
 		int res = -1;
 		
-		roundFinished = false;
+		//roundFinished = false;
 		
 		// If player stands and dealer already has higher value, dealer wins.
 		Printing.printDealerHandAndValue(dealerHand);
@@ -158,8 +158,9 @@ public class Blackjack {
 		// Dealer must draw until the reach 17.
 		while(dealerHand.getValueOfCards() < 17 && roundFinished == false){
 			drawn = playingDeck.drawCard();
-			System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
+			//System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
 			dealerHand.addCard(drawn);
+			System.out.println("Dealer draws: " + drawn.toString() + " - " + dealerHand.getValueOfCards());
 		}
 		
 		int playerValue = playerHand.getValueOfCards();
