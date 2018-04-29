@@ -30,6 +30,9 @@ public class Blackjack {
 		Printing.printThankYouMessage();
 	}
 
+	/*
+	 *  Deals cards, plays the game, checks winner, and continues.
+	 */
 	private static void gameLoop(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		//Main game loop
 		while(playing){
@@ -56,11 +59,16 @@ public class Blackjack {
 			
 			//Start new round
 			roundFinished = false;
+			
 		}//End game loop
 		return;
 	}
 
+	/*
+	 *  Ask user for commands until stand or bust.
+	 */
 	public static void playRound(Hand playerHand, Hand dealerHand, Deck playingDeck) {
+		
 		// Play round
 		while(!roundFinished){
 			Printing.printHandAndValue("Player", playerHand);
@@ -82,6 +90,9 @@ public class Blackjack {
 		}
 	}
 
+	/*
+	 *  Add a card to the player's hand.
+	 */
 	private static void commandPlayerHit(Hand playerHand, Deck playingDeck) {
 		
 		Card drawn = playingDeck.drawCard();
@@ -95,6 +106,9 @@ public class Blackjack {
 		}
 	}
 
+	/*
+	 *  Ask user until command is entered.
+	 */
 	private static int getCommandFromUser(Scanner scanner) {
 		int command = 0;
 		while(true){
@@ -109,13 +123,13 @@ public class Blackjack {
 		return command;
 	}
 
+	/*
+	 * 	If dealer's card is Ace or Ten, dealer checks for Blackjack. 
+	 *  If the dealer has a Blackjack they reveal it.
+	 *  If the player has a Blackjack, the round is a push.
+	 *  Otherwise, the player loses.
+	 */
 	public static int checkNaturalTwentyOne(Hand playerHand, Hand dealerHand) {
-		/*
-		 * 	If dealer's card is Ace or Ten, dealer checks for Blackjack. 
-		 *  If the dealer has a Blackjack they reveal it.
-		 *  If the player has a Blackjack, the round is a push.
-		 *  Otherwise, the player loses.
-		 */
 		int res = -1;
 		int pVal = playerHand.getValueOfCards();
 		int dVal = dealerHand.getValueOfCards();
@@ -148,10 +162,13 @@ public class Blackjack {
 			Printing.printPlayerNatural21();
 			res = 1;
 		}
-		
+	 
 		return res;
 	}
 
+	/*
+	 *  Check the winner of the round after player has chosen commands
+	 */
 	public static int checkWinner(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		
 		int res = -1;
