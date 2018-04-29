@@ -7,11 +7,8 @@
 package tsubaiso_blackjack;
 
 abstract interface Printer {
-		
-		//Output of print statements
-		//public static PrintStream out = System.out;
-		
-		// Welcome, thank you
+			
+		// Welcome, thank you, etc
 		public abstract void printDealingWithAnimation();
 		public abstract void printWelcomeMessage();
 		public abstract void printThankYouMessage();
