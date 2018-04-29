@@ -2,12 +2,12 @@ package tsubaiso_blackjack;
 
 import java.io.PrintStream;
 
-interface Printer {
+abstract interface Printer {
 		
 		//Output of print statements
 		public static PrintStream out = System.out;
 		
-		// Miscellaneous
+		// Welcome, thank you
 		public abstract void printDealingWithAnimation();
 		public abstract void printWelcomeMessage();
 		public abstract void printThankYouMessage();
