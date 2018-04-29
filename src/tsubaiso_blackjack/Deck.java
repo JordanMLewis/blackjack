@@ -12,6 +12,8 @@ import java.util.Random;
 
 public class Deck extends CardContainer{
 
+	Random randomShuffle = new Random();
+	
 	public Deck(){
 		this.cards = new ArrayList<Card>();
 		initializeDeck();
@@ -28,13 +30,13 @@ public class Deck extends CardContainer{
 				this.cards.add(new Card(cardSuit, cardValue));
 			}
 		}
-	} //end createDeck
+	}
 
 	/**
 	 * Shuffle the deck of cards in place using random seed.
 	 */
 	public void shuffle(){
-		Collections.shuffle(this.cards, new Random());
+		Collections.shuffle(this.cards, this.randomShuffle);
 	}
 
 	/**
@@ -55,6 +57,7 @@ public class Deck extends CardContainer{
 	public ArrayList<Card> drawNCards(int n){
 		ArrayList<Card> cardsDrawn = new ArrayList<Card>();
 		Card c = null;
+		
 		//Draw as many cards before running out
 		for(int i = 0; i < n; i++){
 			c = this.removeTopCard();

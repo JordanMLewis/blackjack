@@ -23,32 +23,33 @@ public class Hand extends CardContainer{
 	 * Calculate the value of all cards in the container.
 	 * The first Ace is counted as 11, subsequent Aces are counted as 1.
 	 * 
-	 * @return And int, the numeric value of all cards in the container
+	 * @return An int, the numeric value of all cards in the container
 	 */
  	public int getValueOfCards(){
 		int handValue = 0;
 		int cardValue = 0;
 		int numAces = 0;
 
+		//Get value of all cards
 		for(Card c : this.cards){
 			cardValue = c.getValue();
 
-			//Add cards normally, handle Aces afterwards
+			// handle Aces afterwards
 			if(cardValue != Value.ACE.getValue()){
 				handValue += cardValue;
 			} else {
 				numAces++;
 			}
-		}//end for
+		}
 		
-		//Handle aces, don't go over 21
+		// Only count one Ace as 11, the others as 1
 		for(int i = 0; i < numAces; i++){
 			if(handValue <= 10){
 				handValue += 11;
 			} else {
 				handValue += 1;
 			}
-		}//end for
+		}
 		return handValue;
 	}
 	

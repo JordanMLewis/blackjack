@@ -95,6 +95,7 @@ public class Blackjack {
 	 */
 	private static void commandPlayerHit(Hand playerHand, Deck playingDeck) {
 		
+		//Draw a card and print value
 		Card drawn = playingDeck.drawCard();
 		playerHand.addCard(drawn);
 		Printing.printPlayerDraws(drawn);
@@ -172,26 +173,26 @@ public class Blackjack {
 	public static int checkWinner(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		
 		int res = -1;
-		
-		// If player stands and dealer already has higher value, dealer wins.
+
 		if(!roundFinished){
 			Printing.printDealerHandAndValue(dealerHand);
 		}
 		
-		if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && 
-	       dealerHand.getValueOfCards() < 22 && roundFinished == false){
+		// If player stands and dealer already has higher value, dealer wins.
+		if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && roundFinished == false){
 			Printing.printDealerWinsWithValue(dealerHand);
 			roundFinished = true;
 			res = 1; //player loses
 		}
 
-		// Dealer must draw until the reach 17.
+		// Dealer must draw until at least 17.
 		while(dealerHand.getValueOfCards() < 17 && roundFinished == false){
 			drawn = playingDeck.drawCard();
 			dealerHand.addCard(drawn);
 			Printing.printDealerDrawnAndValue(drawn, dealerHand);
 		}
 		
+		// Simplify code below
 		int playerValue = playerHand.getValueOfCards();
 		int dealerValue = dealerHand.getValueOfCards();
 	
@@ -213,6 +214,8 @@ public class Blackjack {
 			} else if (playerValue < dealerValue){
 				Printing.printDealerHandAndValue(dealerHand);
 				Printing.printPlayerLoseMessage();
+
+			// Equal value, no winners
 			} else {
 				Printing.printPushMessage();
 			}

@@ -6,6 +6,8 @@
 package tsubaiso_blackjack;
 
 public enum Value {
+	
+	//We can instantiate each enum value like a new object
 	TWO(2), 
 	THREE(3), 
 	FOUR(4), 
@@ -22,7 +24,7 @@ public enum Value {
 
 	private final int value;
 	
-	//Automatically assign each constant an int value
+	//Constructor
 	Value(int i){
 		this.value = i;
 	}

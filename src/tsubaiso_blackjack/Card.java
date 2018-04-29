@@ -17,8 +17,7 @@ public class Card {
 	}
 	
 	public String toString(){
-		return "<" + this.value.toString() + " OF " +
-			   this.suit.toString() + ">";
+		return "<" + this.value.toString() + " OF " + this.suit.toString() + ">";
 	}
 	
 	public int getValue(){
