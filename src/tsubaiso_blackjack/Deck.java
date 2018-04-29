@@ -40,7 +40,9 @@ public class Deck extends CardContainer{
 	 */
 	public void shuffle(){
 		//Collections shuffle uses random object for seed
-		Collections.shuffle(this.cards, this.randomShuffle);
+		if(this.cards != null && this.cards.size() > 0){
+			Collections.shuffle(this.cards, this.randomShuffle);
+		}
 	}
 
 	/**

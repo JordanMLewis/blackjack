@@ -20,7 +20,9 @@ abstract class CardContainer {
 	 * @return void 
 	 */
 	public void addCard(Card c){
-		this.cards.add(c);
+		if(c != null){
+			this.cards.add(c);
+		}
 	}
 	
 	/**
@@ -29,8 +31,10 @@ abstract class CardContainer {
 	 * @param cards ArrayList of Cards to be added.
 	 */
 	public void addCards(ArrayList<Card> cards){
-		for(Card c : cards)
-			this.addCard(c);
+		if(cards != null){
+			for(Card c : cards)
+				this.addCard(c);
+		}
 	}
 	
 	/**
@@ -86,8 +90,12 @@ abstract class CardContainer {
 	 */
 	public String toString(){
 		String str = "";
-		for(Card c : this.cards)
-			str += c.toString() + " ";
+		
+		if(this.cards.size() > 0){
+			for(Card c : this.cards)
+				str += c.toString() + " ";
+		}
+		
 		return str;
 	}
 }

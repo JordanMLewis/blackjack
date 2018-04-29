@@ -29,25 +29,28 @@ public class Hand extends CardContainer{
 		int handValue = 0;
 		int cardValue = 0;
 		int numAces = 0;
-
-		//Get value of all cards
-		for(Card c : this.cards){
-			cardValue = c.getValue();
-
-			// handle Aces afterwards
-			if(cardValue != Value.ACE.getValue()){
-				handValue += cardValue;
-			} else {
-				numAces++;
-			}
-		}
 		
-		// Only count one Ace as 11, the others as 1
-		for(int i = 0; i < numAces; i++){
-			if(handValue <= 10){
-				handValue += 11;
-			} else {
-				handValue += 1;
+		//If there is at least 1 card
+		if(this.cards.size() > 0){
+			//Get value of all cards
+			for(Card c : this.cards){
+				cardValue = c.getValue();
+	
+				// handle Aces afterwards
+				if(cardValue != Value.ACE.getValue()){
+					handValue += cardValue;
+				} else {
+					numAces++;
+				}
+			}
+			
+			// Only count one Ace as 11, the others as 1
+			for(int i = 0; i < numAces; i++){
+				if(handValue <= 10){
+					handValue += 11;
+				} else {
+					handValue += 1;
+				}
 			}
 		}
 		return handValue;

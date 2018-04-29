@@ -12,8 +12,10 @@ public class Card {
 	private Value value;
 	
 	public Card(Suit s, Value v){
-		this.suit = s;
-		this.value = v;
+		if(s != null && v != null){
+			this.suit = s;
+			this.value = v;
+		}
 	}
 	
 	public String toString(){
