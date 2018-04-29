@@ -49,7 +49,7 @@ public class Blackjack {
 			}
 			
 			playRound(playerHand, dealerHand, playingDeck);
-			checkWinner(playerHand, dealerHand, playingDeck);
+			checkWinner(playerHand, dealerHand, playingDeck, roundFinished);
 						
 			//Fold hands and put cards into used Deck
 			playingDeck.addCards(playerHand.foldHand());
@@ -170,23 +170,24 @@ public class Blackjack {
 	/*
 	 *  Check the winner of the round after player has chosen commands
 	 */
-	public static int checkWinner(Hand playerHand, Hand dealerHand, Deck playingDeck) {
+	public static int checkWinner(Hand playerHand, Hand dealerHand, Deck playingDeck, boolean roundOver) {
 		
 		int res = -1;
+		boolean finished = roundOver;
 
-		if(!roundFinished){
+		if(!finished){
 			Printing.printDealerHandAndValue(dealerHand);
 		}
 		
 		// If player stands and dealer already has higher value, dealer wins.
-		if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && roundFinished == false){
+		if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && finished == false){
 			Printing.printDealerWinsWithValue(dealerHand);
-			roundFinished = true;
+			finished = true;
 			res = 1; //player loses
 		}
 
 		// Dealer must draw until at least 17.
-		while(dealerHand.getValueOfCards() < 17 && roundFinished == false){
+		while(dealerHand.getValueOfCards() < 17 && finished == false){
 			drawn = playingDeck.drawCard();
 			dealerHand.addCard(drawn);
 			Printing.printDealerDrawnAndValue(drawn, dealerHand);
@@ -197,14 +198,14 @@ public class Blackjack {
 		int dealerValue = dealerHand.getValueOfCards();
 	
 		//If dealer is over 21, dealer loses
-		if(dealerValue > 21 && roundFinished == false){
+		if(dealerValue > 21 && finished == false){
 			Printing.printDealerBustMessage();
-			roundFinished = true;
+			finished = true;
 			res = 2; //dealer busts
 		}
 	
 		// After all drawing
-		if(roundFinished == false) {
+		if(finished == false) {
 			
 			// Player wins
 			if(playerValue > dealerValue){
@@ -219,7 +220,8 @@ public class Blackjack {
 			} else {
 				Printing.printPushMessage();
 			}
-			roundFinished = true;
+			
+			finished = true;
 		}
 		return res;
 	}

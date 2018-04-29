@@ -24,9 +24,12 @@ public class Deck extends CardContainer{
 	 *  Creates a full deck of cards with values 2 to Ace for each suit.
 	 */
 	public void initializeDeck(){
+		Suit[] suits = Suit.values();
+		Value[] values = Value.values();
+
 		//Create all card combinations using the enumerations
-		for(Suit cardSuit : Suit.values()){
-			for(Value cardValue : Value.values()){
+		for(Suit cardSuit : suits){
+			for(Value cardValue : values){
 				this.cards.add(new Card(cardSuit, cardValue));
 			}
 		}
@@ -36,6 +39,7 @@ public class Deck extends CardContainer{
 	 * Shuffle the deck of cards in place using random seed.
 	 */
 	public void shuffle(){
+		//Collections shuffle uses random object for seed
 		Collections.shuffle(this.cards, this.randomShuffle);
 	}
 

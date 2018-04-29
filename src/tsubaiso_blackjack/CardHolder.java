@@ -39,7 +39,11 @@ abstract class CardContainer {
 	 * @return Card
 	 */
 	public Card getTopCard(){
-		return this.cards.get(0);
+		Card topCard = null;
+		if(this.cards.size() > 0){
+			topCard = this.cards.get(0);
+		}
+		return topCard;
 	}
 	
 	/**
@@ -48,7 +52,11 @@ abstract class CardContainer {
 	 * @return Card
 	 */
 	public Card removeTopCard(){
-		return this.cards.remove(0);
+		Card removedCard = null;
+		if(this.cards.size() > 0){
+			removedCard = this.cards.remove(0);
+		}
+		return removedCard;
 	}
 	
 	/**
@@ -58,7 +66,7 @@ abstract class CardContainer {
 	 */
 	public ArrayList<Card> removeAllCards(){
 		ArrayList<Card> tmp = this.cards;
-		this.cards = new ArrayList<Card>();
+		this.cards.clear();
 		return tmp;
 	}
 	
