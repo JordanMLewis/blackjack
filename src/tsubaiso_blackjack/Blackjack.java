@@ -193,7 +193,7 @@ public class Blackjack {
 			Printing.printDealerDrawnAndValue(drawn, dealerHand);
 		}
 		
-		// Simplify code below
+		// No more cards to add, simplify code
 		int playerValue = playerHand.getValueOfCards();
 		int dealerValue = dealerHand.getValueOfCards();
 	
