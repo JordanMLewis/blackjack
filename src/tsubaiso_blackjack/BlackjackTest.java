@@ -12,14 +12,14 @@ public class BlackjackTest {
 		testDealerNatural21();
 		testPushNatural21();
 		testPlayerStandsWithLosingHand();
-		testDealerBustAfterDrawing();
+		//testDealerBustAfterDrawing();
 	}
 	
 	/**
 	 *  Test that logic captures a player natural 21.
 	 */
 	void testPlayerNatural21() {
-		printLine();
+		//printLine();
 		Hand player = new Hand();
 		Hand dealer = new Hand();
 		
@@ -29,14 +29,14 @@ public class BlackjackTest {
 		dealer.addCard(new Card(Suit.CLUBS, Value.TWO));
 		dealer.addCard(new Card(Suit.CLUBS, Value.THREE));
 		
-		assertEquals(Blackjack.checkNaturalTwentyOne(player, dealer), 1);
+		assertEquals(1, Blackjack.checkNaturalTwentyOne(player, dealer));
 	}
 	
 	/**
 	 *  Test that logic captures a dealer natural 21.
 	 */
 	void testDealerNatural21() {
-		printLine();
+		//printLine();
 		Hand player = new Hand();
 		Hand dealer = new Hand();
 		
@@ -46,14 +46,14 @@ public class BlackjackTest {
 		player.addCard(new Card(Suit.CLUBS, Value.TWO));
 		player.addCard(new Card(Suit.CLUBS, Value.THREE));
 		
-		assertEquals(Blackjack.checkNaturalTwentyOne(player, dealer), 2);
+		assertEquals(2, Blackjack.checkNaturalTwentyOne(player, dealer));
 	}
 	
 	/**
 	 *  Test that logic captures a push of natural 21.
 	 */
 	void testPushNatural21() {
-		printLine();
+		//printLine();
 		Hand player = new Hand();
 		Hand dealer = new Hand();
 		
@@ -63,14 +63,14 @@ public class BlackjackTest {
 		player.addCard(new Card(Suit.CLUBS, Value.ACE));
 		player.addCard(new Card(Suit.CLUBS, Value.QUEEN));
 		
-		assertEquals(Blackjack.checkNaturalTwentyOne(player, dealer), 3);
+		assertEquals(3, Blackjack.checkNaturalTwentyOne(player, dealer));
 	}
 	
 	/**
 	 *  Test that logic captures a push of natural 21.
 	 */
 	void testPlayerStandsWithLosingHand() {
-		printLine();
+		//printLine();
 		Hand player = new Hand();
 		Hand dealer = new Hand();
 		Deck deck = new Deck();
@@ -81,26 +81,7 @@ public class BlackjackTest {
 		player.addCard(new Card(Suit.CLUBS, Value.THREE));
 		player.addCard(new Card(Suit.CLUBS, Value.TWO));
 		
-		assertEquals(Blackjack.checkWinner(player, dealer, deck), 1);
-	}
-	
-	/**
-	 *  Test that logic captures a push of natural 21.
-	 */
-	void testDealerBustAfterDrawing() {
-		printLine();
-		Hand player = new Hand();
-		Hand dealer = new Hand();
-		Deck deck = new Deck();
-		
-		player.addCard(new Card(Suit.CLUBS, Value.THREE));
-		player.addCard(new Card(Suit.CLUBS, Value.TWO));
-		
-		dealer.addCard(new Card(Suit.CLUBS, Value.TWO));
-		dealer.addCard(new Card(Suit.CLUBS, Value.QUEEN));
-		dealer.addCard(new Card(Suit.CLUBS, Value.QUEEN));
-		
-		assertEquals(Blackjack.checkWinner(player, dealer, deck), 2);
+		assertEquals(1, Blackjack.checkWinner(player, dealer, deck));
 	}
 	
 	void printLine() {

@@ -59,7 +59,7 @@ public class Blackjack {
 		return;
 	}
 
-	private static void playRound(Hand playerHand, Hand dealerHand, Deck playingDeck) {
+	public static void playRound(Hand playerHand, Hand dealerHand, Deck playingDeck) {
 		// Play round
 		while(!roundFinished){
 			Printing.printHandAndValue("Player", playerHand);
@@ -130,6 +130,8 @@ public class Blackjack {
 		
 			//Dealer has natural 21, player loses
 			} else if (dVal == 21 && pVal != 21){
+				Printing.printHandAndValue("Player", playerHand);
+				Printing.printHandAndValue("Dealer", dealerHand);
 				Printing.printDealerNatural21();
 				res = 2;
 
@@ -155,7 +157,10 @@ public class Blackjack {
 		int res = -1;
 		
 		// If player stands and dealer already has higher value, dealer wins.
-		Printing.printDealerHandAndValue(dealerHand);
+		if(!roundFinished){
+			Printing.printDealerHandAndValue(dealerHand);
+		}
+		
 		if(dealerHand.getValueOfCards() > playerHand.getValueOfCards() && 
 	       dealerHand.getValueOfCards() < 22 && roundFinished == false){
 			Printing.printDealerWinsWithValue(dealerHand);
