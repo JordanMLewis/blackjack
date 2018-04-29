@@ -15,6 +15,7 @@ public class Blackjack {
 		private static boolean roundFinished = false;
 		private static Card drawn = null;
 		private static int command = 0;
+		private static Printer Printing = new EnglishPrinter();
 		
 	public static void main(String[] args){
 		Printing.printWelcomeMessage();
