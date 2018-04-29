@@ -12,7 +12,6 @@ public class BlackjackTest {
 		testDealerNatural21();
 		testPushNatural21();
 		testPlayerStandsWithLosingHand();
-		//testDealerBustAfterDrawing();
 	}
 	
 	/**
