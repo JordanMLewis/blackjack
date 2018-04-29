@@ -16,14 +16,14 @@ public class Deck extends CardContainer{
 	
 	public Deck(){
 		this.cards = new ArrayList<Card>();
-		initializeDeck();
-		shuffle();
+		this.initializeDeck();
+		this.shuffle();
 	}
 	
 	/**
 	 *  Creates a full deck of cards with values 2 to Ace for each suit.
 	 */
-	public void initializeDeck(){
+	private void initializeDeck(){
 		Suit[] suits = Suit.values();
 		Value[] values = Value.values();
 
