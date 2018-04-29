@@ -6,6 +6,7 @@
  */
 package tsubaiso_blackjack;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Blackjack {
@@ -62,7 +63,6 @@ public class Blackjack {
 			roundFinished = false;
 			
 		}//End game loop
-		return;
 	}
 
 	/*
@@ -75,8 +75,10 @@ public class Blackjack {
 			Printing.printHandAndValue("Player", playerHand);
 			Printing.printDealerFirstCard(dealerHand);
 			
-			command = getCommandFromUser(scanner);
-
+			//command = getCommandFromUser(scanner);
+			Random r = new Random();
+			command = r.nextInt(2) + 1;
+			
 			//Hit 
 			if(command == 1){
 				commandPlayerHit(playerHand, playingDeck);
@@ -188,6 +190,7 @@ public class Blackjack {
 		}
 
 		// Dealer must draw until at least 17.
+		// TODO
 		while(dealerHand.getValueOfCards() < 17 && finished == false){
 			drawn = playingDeck.drawCard();
 			dealerHand.addCard(drawn);

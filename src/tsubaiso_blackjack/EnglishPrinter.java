@@ -16,13 +16,13 @@ public class EnglishPrinter implements Printer{
 	public void printDealingWithAnimation(){
 		out.print("Dealing");
 		try{
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			out.print(".");
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			out.print(".");
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			out.print(".\n");
-			Thread.sleep(1000);
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
 			//Do nothing
 		}

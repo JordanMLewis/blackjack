@@ -70,7 +70,7 @@ abstract class CardContainer {
 	 */
 	public ArrayList<Card> removeAllCards(){
 		ArrayList<Card> tmp = this.cards;
-		this.cards.clear();
+		this.cards = new ArrayList<Card>();
 		return tmp;
 	}
 	
@@ -90,12 +90,10 @@ abstract class CardContainer {
 	 */
 	public String toString(){
 		String str = "";
-		
 		if(this.cards.size() > 0){
 			for(Card c : this.cards)
 				str += c.toString() + " ";
 		}
-		
 		return str;
 	}
 }
