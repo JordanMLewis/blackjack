@@ -177,7 +177,7 @@ public class Blackjack {
 		boolean finished = roundOver;
 
 		if(!finished){
-			Printing.printDealerHandAndValue(dealerHand);
+			Printing.printHandAndValue("Dealer", dealerHand);
 		}
 		
 		// If player stands and dealer already has higher value, dealer wins.
@@ -214,7 +214,7 @@ public class Blackjack {
 
 			// Dealer wins
 			} else if (playerValue < dealerValue){
-				Printing.printDealerHandAndValue(dealerHand);
+				Printing.printHandAndValue("Dealer", dealerHand);
 				Printing.printPlayerLoseMessage();
 
 			// Equal value, no winners

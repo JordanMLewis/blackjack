@@ -1,11 +1,15 @@
+/*
+ *  Author: Jordan M. Lewis
+ *  
+ *  This interface specifies all game play messages that must 
+ *  be implemented if a new language is added.
+ */
 package tsubaiso_blackjack;
-
-import java.io.PrintStream;
 
 abstract interface Printer {
 		
 		//Output of print statements
-		public static PrintStream out = System.out;
+		//public static PrintStream out = System.out;
 		
 		// Welcome, thank you
 		public abstract void printDealingWithAnimation();
@@ -19,7 +23,6 @@ abstract interface Printer {
 		// Print drawing card
 		public abstract void printHandsAndValues(Hand playerHand, Hand dealerHand);
 		public abstract void printHandAndValue(String playerName, Hand h);
-		public abstract void printDealerHandAndValue(Hand h);
 		public abstract void printDealerFirstCard(Hand h);
 		public abstract void printPlayerDraws(Card c);
 		public abstract void printDealerDrawnAndValue(Card drawn, Hand dealerHand);

@@ -1,8 +1,7 @@
 /*
  *  Author: Jordan M. Lewis
  *  
- *  This class is used to organize various print statements used during gameplay.
- * 
+ *  This class is used for English game play.
  */
 package tsubaiso_blackjack;
 
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 public class EnglishPrinter implements Printer{
 
 	//Output of print statements
-	public PrintStream out;
+	public PrintStream out = System.out;
 	
 	// Welcome, thank you
 	public void printDealingWithAnimation(){
@@ -51,11 +50,6 @@ public class EnglishPrinter implements Printer{
 	}
 	public void printHandAndValue(String playerName, Hand h){
 		out.print(playerName + "'s hand: ");
-		out.print(h.toString() + "- ");
-		out.println(h.getValueOfCards());
-	}	
-	public void printDealerHandAndValue(Hand h) {
-		out.print("Dealer hand: ");
 		out.print(h.toString() + "- ");
 		out.println(h.getValueOfCards());
 	}	
