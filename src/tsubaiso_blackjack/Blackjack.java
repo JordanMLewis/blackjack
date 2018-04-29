@@ -53,6 +53,7 @@ public class Blackjack {
 			playingDeck.addCards(dealerHand.foldHand());
 			playingDeck.shuffle();
 			Printing.printEndRound();
+			
 			//Start new round
 			roundFinished = false;
 		}//End game loop
@@ -124,27 +125,26 @@ public class Blackjack {
 			
 			//If both hands are 21, push
 			if(dVal == 21 && pVal == 21){
-				Printing.printHandAndValue("Player", playerHand);
+				Printing.printHandsAndValues(playerHand, dealerHand);
 				Printing.printPushMessage();	
 				res = 3;
 		
 			//Dealer has natural 21, player loses
 			} else if (dVal == 21 && pVal != 21){
-				Printing.printHandAndValue("Player", playerHand);
-				Printing.printHandAndValue("Dealer", dealerHand);
+				Printing.printHandsAndValues(playerHand, dealerHand);
 				Printing.printDealerNatural21();
 				res = 2;
 
 			//Player has natural 21, player wins
 			} else if (dVal != 21 && pVal == 21){
-				Printing.printHandAndValue("Player", playerHand);
+				Printing.printHandsAndValues(playerHand, dealerHand);
 				Printing.printPlayerNatural21();
 				res = 1;
 			}
 			
 		//If dealer could not show, check player's hand
 		} else if (pVal == 21){
-			Printing.printHandAndValue("Player", playerHand);
+			Printing.printHandsAndValues(playerHand, dealerHand);
 			Printing.printPlayerNatural21();
 			res = 1;
 		}

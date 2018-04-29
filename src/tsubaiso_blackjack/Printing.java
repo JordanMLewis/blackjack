@@ -19,6 +19,11 @@ public class Printing {
 		out.println(h.getValueOfCards());
 	}
 
+	public static void printHandsAndValues(Hand playerHand, Hand dealerHand){
+		printHandAndValue("Player", playerHand);
+		printHandAndValue("Dealer", dealerHand);
+	}
+	
 	public static void printPushMessage() {
 		out.println("Push. No winners.");
 	}
@@ -53,6 +58,14 @@ public class Printing {
 			out.print(".");
 			Thread.sleep(1000);
 			out.print(".\n");
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			//Do nothing
+		}
+	}
+
+	public static void pause(){
+		try{
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			//Do nothing
