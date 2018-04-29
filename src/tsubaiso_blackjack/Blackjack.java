@@ -46,7 +46,6 @@ public class Blackjack {
 			}
 			
 			playRound(playerHand, dealerHand, playingDeck);
-
 			checkWinner(playerHand, dealerHand, playingDeck);
 						
 			//Fold hands and put cards into used Deck
