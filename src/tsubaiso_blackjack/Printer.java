@@ -39,5 +39,5 @@ abstract interface Printer {
 		public abstract void printDealerNatural21();
 		
 		//Extra
-		public abstract void pause();
+		public abstract void pause(int n);
 }

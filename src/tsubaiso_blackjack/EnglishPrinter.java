@@ -94,9 +94,9 @@ public class EnglishPrinter implements Printer{
 	}
 	
 	//Extra
-	public void pause(){
+	public void pause(int n){
 		try{
-			Thread.sleep(1000);
+			Thread.sleep(n);
 		} catch (InterruptedException e) {
 			//Do nothing
 		}
