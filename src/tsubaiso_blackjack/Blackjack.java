@@ -57,6 +57,7 @@ public class Blackjack {
 			playingDeck.addCards(playerHand.foldHand());
 			playingDeck.addCards(dealerHand.foldHand());
 			playingDeck.shuffle();
+			
 			Printing.printEndRound();
 			
 			//Start new round
@@ -75,9 +76,7 @@ public class Blackjack {
 			Printing.printHandAndValue("Player", playerHand);
 			Printing.printDealerFirstCard(dealerHand);
 			
-			//command = getCommandFromUser(scanner);
-			Random r = new Random();
-			command = r.nextInt(2) + 1;
+			command = getCommandFromUser(scanner);
 			
 			//Hit 
 			if(command == 1){
